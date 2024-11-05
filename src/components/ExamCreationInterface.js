@@ -18,13 +18,12 @@ const ExamCreationInterface = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = () => {
-    setLoading(true); // Set loading to true
-   
+    setLoading(true);
     setTimeout(() => {
       setLoading(false); 
-     
     }, 2000); 
   };
+
   const [formData, setFormData] = useState({
     examName: '',
     duration: '',
@@ -36,7 +35,7 @@ const ExamCreationInterface = () => {
     requiresRegistration: false,
     captureImage: false,
     captureInterval: 30,
-    instructions: 'Default exam instructions...'
+    instructions: 'Default exam instructions...', 
   });
 
   const [isValid, setIsValid] = useState(true); 
@@ -89,17 +88,12 @@ const ExamCreationInterface = () => {
           </div>
         </div>
 
-       
         {step === 1 && (
           <div className="space-y-6">
-           
             {!isValid && <p className="text-red-500">Please fill in all required fields correctly.</p>}
             <div className="space-y-4">
-            
               <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <label className="block text-sm font-medium mb-2">
-                  Exam Name*
-                </label>
+                <label className="block text-sm font-medium mb-2">Exam Name*</label>
                 <input
                   type="text"
                   className="w-full bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
@@ -109,11 +103,8 @@ const ExamCreationInterface = () => {
                 />
               </div>
 
-             
               <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <label className="block text-sm font-medium mb-2">
-                  Duration (minutes)*
-                </label>
+                <label className="block text-sm font-medium mb-2">Duration (minutes)*</label>
                 <input
                   type="number"
                   className="w-full bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
@@ -123,11 +114,8 @@ const ExamCreationInterface = () => {
                 />
               </div>
 
-            
               <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <label className="block text-sm font-medium mb-2">
-                  Question Picking*
-                </label>
+                <label className="block text-sm font-medium mb-2">Question Picking*</label>
                 <select
                   className="w-full bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
                   value={questionPicking}
@@ -138,7 +126,6 @@ const ExamCreationInterface = () => {
                 </select>
               </div>
 
-             
               <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg font-semibold">Question Distribution</h3>
@@ -258,9 +245,7 @@ const ExamCreationInterface = () => {
         {step === 2 && (
           <div className="space-y-6">
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-              <label className="block text-sm font-medium mb-2">
-                Negative Marking (per question)
-              </label>
+              <label className="block text-sm font-medium mb-2">Negative Marking (per question)</label>
               <input
                 type="number"
                 className="w-full bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
@@ -305,6 +290,41 @@ const ExamCreationInterface = () => {
                 placeholder="Enter passing score"
               />
             </div>
+
+            {/* New Feature: Capture Image */}
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+              <label className="flex items-center mb-2">
+                <input
+                  type="checkbox"
+                  className="mr-2"
+                  checked={formData.captureImage}
+                  onChange={(e) => setFormData({ ...formData, captureImage: e.target.checked })}
+                />
+                Capture Image During Exam
+              </label>
+              <label className="block text-sm font-medium mb-2">Capture Interval (seconds)</label>
+              <input
+                type="number"
+                className="w-full bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
+                value={formData.captureInterval}
+                onChange={(e) => setFormData({ ...formData, captureInterval: e.target.value })}
+                placeholder="Enter capture interval in seconds"
+                disabled={!formData.captureImage} 
+              />
+            </div>
+
+           
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+              <label className="block text-sm font-medium mb-2">Instructions</label>
+              <textarea
+                className="w-full bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
+                value={formData.instructions}
+                onChange={(e) => setFormData({ ...formData, instructions: e.target.value })}
+                placeholder="Enter exam instructions..."
+                rows="4"
+              />
+            </div>
+
             <div className="flex justify-end space-x-4">
               <button
                 className="px-6 py-2 bg-gray-600 rounded-lg hover:bg-gray-500 transition-colors"
@@ -314,14 +334,30 @@ const ExamCreationInterface = () => {
               </button>
               <button
                 className={`px-6 py-2 ${loading ? 'bg-gray-500' : 'bg-blue-500'} rounded-lg hover:bg-blue-400 transition-colors`}
-                onClick={handleSubmit} // Update to use handleSubmit
-                disabled={loading} // Disable button while loading
+                onClick={handleSubmit} 
+                disabled={loading} 
               >
                 {loading ? (
                   <span className="loader"></span> // Loader element
                 ) : (
                   'Submit'
                 )}
+              </button>
+              <button
+                className="px-6 py-2 bg-green-500 rounded-lg hover:bg-green-400 transition-colors"
+                onClick={() => {
+                
+                }}
+              >
+                Publish & Send Invite
+              </button>
+              <button
+                className="px-6 py-2 bg-gray-500 rounded-lg hover:bg-gray-400 transition-colors"
+                onClick={() => {
+                
+                }}
+              >
+                Save and Close
               </button>
             </div>
           </div>
