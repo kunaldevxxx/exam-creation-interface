@@ -256,24 +256,24 @@ const ExamCreationInterface = () => {
             </div>
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
               <label className="block text-sm font-medium mb-2">Marks per Difficulty</label>
-              <div className="flex space-x-4">
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                 <input
                   type="number"
-                  className="bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full sm:w-auto bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
                   value={formData.easyMarks}
                   onChange={(e) => setFormData({ ...formData, easyMarks: e.target.value })}
                   placeholder="Easy"
                 />
                 <input
                   type="number"
-                  className="bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full sm:w-auto bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
                   value={formData.mediumMarks}
                   onChange={(e) => setFormData({ ...formData, mediumMarks: e.target.value })}
                   placeholder="Medium"
                 />
                 <input
                   type="number"
-                  className="bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full sm:w-auto bg-gray-700 border-2 border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
                   value={formData.hardMarks}
                   onChange={(e) => setFormData({ ...formData, hardMarks: e.target.value })}
                   placeholder="Hard"
@@ -291,16 +291,15 @@ const ExamCreationInterface = () => {
               />
             </div>
 
-            {/* New Feature: Capture Image */}
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-              <label className="flex items-center mb-2">
+              <label className="flex items-center mb-2 cursor-pointer">
                 <input
                   type="checkbox"
-                  className="mr-2"
+                  className="form-checkbox h-5 w-5 text-blue-600 bg-gray-700 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                   checked={formData.captureImage}
                   onChange={(e) => setFormData({ ...formData, captureImage: e.target.checked })}
                 />
-                Capture Image During Exam
+                <span className="ml-2 text-sm text-gray-300">Capture Image During Exam</span>
               </label>
               <label className="block text-sm font-medium mb-2">Capture Interval (seconds)</label>
               <input
@@ -313,7 +312,6 @@ const ExamCreationInterface = () => {
               />
             </div>
 
-           
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
               <label className="block text-sm font-medium mb-2">Instructions</label>
               <textarea
@@ -325,7 +323,7 @@ const ExamCreationInterface = () => {
               />
             </div>
 
-            <div className="flex justify-end space-x-4">
+            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-4">
               <button
                 className="px-6 py-2 bg-gray-600 rounded-lg hover:bg-gray-500 transition-colors"
                 onClick={() => setStep(1)}
@@ -338,7 +336,7 @@ const ExamCreationInterface = () => {
                 disabled={loading} 
               >
                 {loading ? (
-                  <span className="loader"></span> // Loader element
+                  <span className="loader"></span>
                 ) : (
                   'Submit'
                 )}
