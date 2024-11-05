@@ -33,18 +33,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ## Libraries Used
 
-- **React** ![React Icon](https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg)
+- **React** 
 - **Axios** ![Axios Icon](https://axios-http.com/assets/logo.svg)
 - **Lucide React** ![Lucide Icon](https://lucide.dev/logo.svg) - For icons used in the application.
-- **Tailwind CSS** ![Tailwind CSS Icon](https://tailwindcss.com/logo.svg) - For styling the application.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm start
+- **Tailwind CSS** -  For styling the application.

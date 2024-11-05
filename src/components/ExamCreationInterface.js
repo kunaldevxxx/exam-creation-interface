@@ -15,7 +15,16 @@ const ExamCreationInterface = () => {
     medium: 0,
     hard: 0
   })));
-  
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = () => {
+    setLoading(true); // Set loading to true
+   
+    setTimeout(() => {
+      setLoading(false); 
+     
+    }, 2000); 
+  };
   const [formData, setFormData] = useState({
     examName: '',
     duration: '',
@@ -304,9 +313,15 @@ const ExamCreationInterface = () => {
                 Back
               </button>
               <button
-                className="px-6 py-2 bg-blue-500 rounded-lg hover:bg-blue-400 transition-colors"
+                className={`px-6 py-2 ${loading ? 'bg-gray-500' : 'bg-blue-500'} rounded-lg hover:bg-blue-400 transition-colors`}
+                onClick={handleSubmit} // Update to use handleSubmit
+                disabled={loading} // Disable button while loading
               >
-                Submit
+                {loading ? (
+                  <span className="loader"></span> // Loader element
+                ) : (
+                  'Submit'
+                )}
               </button>
             </div>
           </div>
